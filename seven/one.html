@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #list{list-style: none;}
+    </style>
+</head>
+<body>
+  <ul id="list">
+      <li>刘备</li>
+      <li id="li">曹操</li>
+      <li>关羽</li>
+  </ul>
+  <div class="div">
+      <div id="test"></div>
+  </div>
+</body>
+<script>
+    // var oUl = document.getElementById('list');
+    // alert(oUl.children[0].innerHTML);
+    //通过子节点得到父节点
+    // var oDiv = document.getElementById('test');
+    // alert(oDiv.parentNode.className);
+    // var oUl = document.getElementById('list');
+    // alert(oUl.firstElementChild.innerHTML);
+    // alert(oUl.lastElementChild.innerHTML);
+    // var oLi = document.getElementById('li');
+    // alert(oLi.previousElementSibling.innerHTML);
+    // alert(oLi.nextElementSibling.innerHTML);
+    var oLi = document.createElement('li');
+    oLi.innerHTML = '赵云';
+    var oUl = document.getElementById('list');
+    // oUl.appendChild(oLi);
+    // oUl.removeChild(oLi);
+    var oLi1 = document.getElementById('li');
+    oUl.insertBefore(oLi,oLi1);
+</script>
+</html>

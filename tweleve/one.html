@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动播放选项卡</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{width:1050px;border: 1px solid red;margin: 0 auto;}
+        .box button{width: 120px;margin-top: 20px;height: 50px;
+        font-size: 20px;margin-left: 20px;}
+        .box div{margin-top: 20px;width: 1050px;height: 500px;font-size: 40px;
+        text-align: center;background-color: pink;display: none;}
+        .box .show{display: block;}
+        .box .active{width: 140px;background-color: tomato;}
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <button>⬅</button>
+        <button class="active">周杰伦</button>
+        <button>林俊杰</button>
+        <button>刘德华</button>
+        <button>张学友</button>
+        <button>陈奕迅</button>
+        <button>➡</button>
+        <div class="show">曹操、豆浆油条、江南</div>
+        <div>爱你一万年、冰雨、男人哭吧不是罪</div>
+        <div>吻别、情书、饿狼传说</div>
+        <div>十年、爱情呼叫转移、浮夸</div>
+    </div>
+</body>
+<script>
+     var aButton= document.getElementsByTagName('button');
+     //定义一个空数组存放中间的Button的值
+     var number = 0;
+     //用来记录当前选中的是哪个按钮和div
+     var aBtn = [];
+     for (var i= 1; i< aButton.length -1 ;i++){
+         aBtn.push(aButton[i]);
+         // console.log(aButton[i])
+     }
+
+    var oBox = document.getElementById('box');
+    var aDiv = oBox.getElementsByTagName('div');
+
+    for (var i=0; i < aBtn.length;i++){
+        aBtn[i].index = i;
+        aBtn[i].onclick = function () {
+           for (var j =0;  j< aBtn.length; j++){
+               aBtn[j].className = '';
+               aDiv[j].className = '';
+           }
+           this.className = 'active';
+           aDiv[this.index].className = 'show';
+           //更新number值
+            number = this.index;
+        };
+    }
+
+
+    //获取第一个按钮和最后一个按钮
+    var oPre = aButton[0];
+    var oNext = aButton[aButton.length-1];
+    //添加事件
+    oPre.onclick = function () {
+       number--;
+       if(number == -1){
+           number = aBtn.length  - 1;
+       }
+       addName();
+    };
+    oNext.onclick = next;
+    function next() {
+      number++;
+      if(number == aBtn.length){
+          number = 0;
+      }
+      addName();
+    }
+
+    function addName() {
+        for (var i = 0; i< aBtn.length;i++){
+            aBtn[i].className = '';
+            aDiv[i].className = '';
+        }
+        aBtn[number].className = 'active';
+        aDiv[number].className = 'show';
+    }
+
+    var timer = null;
+    timer = setInterval(next,1000);
+    oBox.onmouseover = function () {
+       clearInterval(timer);
+    }
+    oBox.onmouseout = function () {
+      timer = setInterval(next,1000);
+    }
+
+</script>
+</html>

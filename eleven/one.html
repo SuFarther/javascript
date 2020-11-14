@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+   <div id="div">
+       <img src="1.jpg" />
+   </div>
+   <button onclick="test()">取消</button>
+</body>
+<script>
+    var oDiv = document.getElementById('div');
+    var timer = setTimeout(function () {
+        oDiv.style.display = 'none';
+    },3000);
+
+    function test() {
+       clearTimeout(timer);
+    }
+</script>
+</html>

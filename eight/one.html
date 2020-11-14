@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        #div{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div" onclick="change(this)"></div>
+</body>
+<script>
+    var oDiv = document.getElementById('div');
+
+
+    function change(obj) {
+       obj.style.backgroundColor = 'yellow';
+    }
+
+    // oDiv.onclick = change;
+    //
+    // function change() {
+    //    this.style.backgroundColor = 'blue';
+    // }
+    // oDiv.onclick = function () {
+    //    this.style.backgroundColor  = 'green';
+    // }
+    // oDiv.onmouseover = function () {
+    //    this.style.backgroundColor = 'yellow';
+    // }
+    // oDiv.onmouseout = function () {
+    //   this.style.backgroundColor = 'pink';
+    // }
+</script>
+</html>

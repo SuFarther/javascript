@@ -1,0 +1,19 @@
+5、事件冒泡
+   事件ev(主流)和window.event 兼容性写法
+     var oEvent = ev || window.event
+
+   事件源对象
+     srcElement(谷歌和IE)
+     target(火狐专用) oEvent.target
+   获取鼠标的x和y坐标
+     console.log(oEvent.ClientX,oEvent.clientY);
+   事件冒泡
+   取消事件冒泡(cancelBubble)
+      var oEvent = ev || window.event
+      oEvent.cancelBubble = true;
+
+6、超链接和点击事件同时触发
+      阻止默认的行为不去响应,只响应自己添加的事件
+      return false: 函数中return false,然后onclick中 return demo()
+      oEvent.preventDefault()
+      (无论是针对普通事件还是针对绑定的事件都管用) 主流浏览器支持

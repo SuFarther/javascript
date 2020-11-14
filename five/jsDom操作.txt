@@ -1,0 +1,59 @@
+jsDOM操作-节点操作
+
+1、DOM操作 (document object model) 文档对象模型
+     document.getElementById();
+     document.getElementsByClassName //得到的是一个模型,下标从0开始
+     document.getElementsByName
+     document.getElementsByTagName 这些得到的都是集合,需要通过下标来依次访问
+     document.title 获取网页标题
+     document.body  获取body节点
+     document.documentElement.clientWidth  获取可视区的宽度
+     document.documentElement.clientHeight 获取可视区的高度
+
+2、onload加载
+    当页面全面加载完毕之后执行其中的代码
+    onresize : 当窗口大小发生改变的时候触发这个事件
+
+3、获取属性
+    获取对象属性,获取对象的style
+       oDiv.className  获取类名
+       oDiv.id
+       oDiv.className
+       oDiv.style.width
+       oDiv.style.backgroundColor
+       //通过style然后再获取div的宽度、高度和背景颜色
+       [注] css属性中带杠的,在js对象中属性命名规则为小驼峰
+    获取标签文本
+       //得到div中的文本内容,下面那两个可以得到内容
+       alert(oDiv.innerHTML); //会得到html中的标签
+       alert(oDiv.innerText);  //这个是div中纯文本内容
+
+    setAttribute getAttribute
+       attribute:属性
+       通过getAttribute可以获取自定义属性,通过点只能获取其标准属性
+       通过setAttribute可以修改自定义属性
+    通过非行内样式
+      oDiv.currentStyle('width')  IE支持,火狐谷歌浏览器不支持
+      getComputedStyle(oDiv,null)['width'];  火狐谷歌支持,IE不支持
+
+    4、节点操作
+       children //根据父亲找到所有的儿子
+       parentNode //根据儿子找到父亲
+
+       火狐或者谷歌
+       firstElementChild //长子
+       lastElementChild   //老么
+       previousElementSibling //同辈中的上一个
+       nextElementSibling  //同辈中的下一个
+
+       IE 6/7/8
+       firstChild
+       lastChild
+       previousSibling
+       nextSibling
+
+       添加删除节点
+         createElement //创建节点,该方法只属于document
+         removeChild   //删除节点,该方法任何父对象都可以
+         appendChild   //追加节点,在父对象的下面追加一个节点
+         insertBefore  //插入节点,插入到父对象下面的某个节点前面

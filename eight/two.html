@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #div{width: 300px;height: 300px;background-color: #ff5d5a;}
+    </style>
+</head>
+<body>
+   <div id="div"></div>
+</body>
+<script>
+    var oDiv = document.getElementById('div');
+    //给div引入两个事件
+    // oDiv.addEventListener('click',test1);
+    // oDiv.addEventListener('click',test2);
+    addEvent(oDiv,'click',test1);
+    oDiv.removeEventListener('click',test1);
+    addEvent(oDiv,'click',test2);
+    
+    function test1() {
+       console.log(100);
+    }
+    function test2() {
+       console.log(200);
+    }
+
+
+    function addEvent(obj,ev,fn) {
+       if(obj.addEventListener){
+           obj.addEventListener(ev,fn);
+       }else {
+           obj.attachEvent('on'+ev,fn);
+       }
+    }
+</script>
+</html>

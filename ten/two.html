@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉框</title>
+</head>
+<body>
+   <select name="" id="sel">
+       <option value="100">请选择</option>
+       <option value="200">北京</option>
+       <option value="300">上海</option>
+       <option value="400">广州</option>
+   </select>
+</body>
+<script>
+    var oSelect = document.getElementById('sel');
+    oSelect.onchange = function () {
+       // console.log(oSelect.selectedIndex);
+        console.log(oSelect.options[oSelect.selectedIndex]['value'],oSelect.options[oSelect.selectedIndex].innerHTML);
+    }
+
+</script>
+</html>

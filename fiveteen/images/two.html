@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        *
+        {
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        #box
+        {
+            width:996px;
+            margin:0 auto;
+        }
+        ul
+        {
+            float:left;
+            width:310px;
+            border:1px solid red;
+            margin:10px;
+        }
+        ul li
+        {
+            width:100%;
+            background:#ccc;
+            margin:10px 0;
+        }
+        li img
+        {
+            width:310px;
+            height:310px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<script>
+    (function(){
+
+        var oBox = document.getElementById('box');
+        var aUl = oBox.children;
+        var aImg = document.getElementsByTagName('img');
+        var count = 0;
+        //li的创建
+        var createLi = function(count){
+            var oNewLi = document.createElement('li');
+            oNewLi.style.height = 310+'px';
+            oNewLi.innerHTML = '<img _src="'+count+'.jpeg" />';
+            return oNewLi;
+        }
+        //判断在某个ul中创建li
+        var create = function(count){
+            for(var i=0; i<10; i++){
+                count+=1;
+                var oLi = createLi(count);
+                //存放ul的数组
+                var arr = [];
+                for(var j=0; j<aUl.length; j++){
+                    arr.push(aUl[j]);
+                }
+                //通过ul的内容高度，对ul进行排序
+                arr.sort(function(u1,u2){
+                    return u1.scrollHeight-u2.scrollHeight;
+                });
+                //把li插入到高度最小的ul中
+                arr[0].appendChild(oLi);
+            }
+        }
+        var setLoad = function(){
+
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            var currentScroll = document.body.scrollHeight-document.documentElement.clientHeight;
+            var scrollBottom = scrollTop+document.documentElement.clientHeight;
+            var setSrc = function(){
+                for(var i=0; i<aImg.length; i++){
+                    if(aImg[i].offsetTop<scrollBottom){
+                        aImg[i].setAttribute('src',aImg[i].getAttribute('_src'));
+                    }
+                }
+            }
+            if(aImg.length==30){
+                setSrc();
+            }else{
+                if(scrollTop>=currentScroll){
+                    count +=10;
+                    create(count);
+                }
+                setSrc();
+            }
+        };
+
+        create(count);
+        setLoad();
+        window.onresize=window.onscroll=setLoad;
+
+    })();
+</script>
+</body>
+</html>

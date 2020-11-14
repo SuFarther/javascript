@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 830px;
+            border: 1px solid black;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .box li{
+            list-style: none;
+            width: 180px;
+            height: 250px;
+            border: 1px solid tomato ;
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .box img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+   <div class="box" id="box">
+       <li><img _src="images/1.jpeg" /></li>
+       <li><img _src="images/2.jpeg" /></li>
+       <li><img _src="images/3.jpeg" /></li>
+       <li><img _src="images/4.jpeg" /></li>
+       <li><img _src="images/5.jpeg" /></li>
+       <li><img _src="images/6.jpeg" /></li>
+       <li><img _src="images/7.jpeg" /></li>
+       <li><img _src="images/8.jpeg" /></li>
+       <li><img _src="images/9.jpeg" /></li>
+       <li><img _src="images/10.jpeg" /></li>
+       <li><img _src="images/11.jpeg" /></li>
+       <li><img _src="images/12.jpeg" /></li>
+       <li><img _src="images/13.jpeg" /></li>
+       <li><img _src="images/14.jpeg" /></li>
+       <li><img _src="images/15.jpeg" /></li>
+       <li><img _src="images/16.jpeg" /></li>
+       <li><img _src="images/17.jpeg" /></li>
+       <li><img _src="images/18.jpeg" /></li>
+       <li><img _src="images/19.jpeg" /></li>
+       <li><img _src="images/20.jpeg" /></li>
+       <li><img _src="images/21.jpeg" /></li>
+       <li><img _src="images/22.jpeg" /></li>
+   </div>
+</body>
+</html>
+<script>
+    //获取所有图片对象
+    var aImage = document.getElementsByTagName('image');
+    //获取可视区的高度
+    var height = document.documentElement.clientHeight;
+    //当滚动时.触发这个事件
+    window.onload =  window.onscroll = function () {
+       //得到卷起的高度
+        var scrollTop = document.body.scrollTop;
+        //遍历所有的图片,看哪些需要显示,哪些不需要显示
+        for (var i=0;i<aImage.length;i++){
+            //获取该图片距离网页顶部的距离
+            var top = aImage[i].offsetTop;
+            //根据top和卷起高度和可视区高度,判断该图片是否显示
+            if(top <= height + scrollTop){
+                aImage[i].src = aImage[i].getAttribute('_src');
+            }
+        }
+    }
+</script>

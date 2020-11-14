@@ -1,0 +1,25 @@
+js-定时器
+
+
+定时器
+  一次性： var timer = setTimeout(方法,时间);
+  该方法会返回一个定时器对象
+  销毁一次性定时器
+  clearTimeout(timer);
+
+  周期性: var timer = setInterval(方法,时间);
+  销毁周期性定时器
+  clearInterval(timer);
+
+
+
+2、自动播放选项卡
+3、懒加载
+  测试前提: 都是在h5的标准下进行
+  oDiv.offsetWidth  获取div宽度
+  oDiv.offsetHeight  获取div高度
+  oDiv.offsetTop  距离网页上面高度
+  oDiv.offsetLeft  距离网页上面宽度
+  document.documentElement.clientHeight 可视区高度
+  document.documentElement.clientWidth  可视区宽度
+  document.body.scrollTop 卷起高度

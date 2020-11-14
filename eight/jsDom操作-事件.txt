@@ -1,0 +1,41 @@
+jsDoM操作-事件
+
+1、js核心
+    根据事件来修改标签的属性值
+2、 常用事件
+    onmouseover(当鼠标悬停的时候)
+    onmouseout(当鼠标离开的时候)
+    onmouseup(当鼠标松开的时候)
+    onmousedown(当鼠标移动的时候)
+    onclick(点击事件)
+    ondblclick(双击)
+    onblur(失去焦点的时候)
+    onfocus(得到焦点的时候)
+3、事件使用
+4、事件绑定
+    执行两个onclick事件
+    addEventListener  主流浏览器
+    attachEvent       IE浏览器
+    removeEventListener  主流浏览器
+    detachEvent       IE浏览器
+
+
+    兼容地写法
+       function addEvent(obj,ev,fn){
+          if(obj.addEventListener){
+             obj.addEventListener(ev,fn);
+          }else{
+             obj.attachEvent('on'+ev,fn);
+          }
+       }
+
+
+5、事件冒泡
+     事件ev(主流)和window.event  兼容性写法
+        var oEvent = ev || window.event;
+     事件源对象
+         srcElement(谷歌和IE)
+         target(火狐专用) oEvent.target
+     获取鼠标的x和y坐标
+         console.log(oEvent.clientX,oEvent.clientY);
+     事件冒泡

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // var arr = [1,2,3];
+    //  alert(arr);
+    // var arr2 = new Array(1,6,8);
+    // alert(arr2);
+    // var arr = [1,2,3];
+    // arr['name'] ='小明';
+    // arr['age'] = 18
+    // alert(arr);
+    // var  arr = new Array(1,2,3);
+    // arr['name'] = '笑话';
+    // alert(arr.name);
+    // alert(arr.length);
+    // var arr = [1,2,3,4];
+    // arr['name'] ='小虎';
+    // for (var i = 0;i<arr.length;i++){
+    //     console.log(arr[i]);
+    // }
+
+    /**
+     * for in不仅可以遍历中间添加的属性,索引的值
+     */
+    // for (var i in arr){
+    //     console.log(arr[i]);
+    // }
+
+    //object创建对象
+    // var obj = new Object();
+    // obj.name = '笑死';
+    // obj.age = 18;
+    // obj.say = function () {
+    //  console.log(this.name,this.age);
+    // }
+    // obj.say();
+
+    //通过json方式创建
+    // var obj = {'name':'笑话','age':18
+    // ,say:function(){
+    //      console.log(this.name,this.age);
+    // }};
+    // obj.say();
+
+    //通过函数的方式创建
+    function Person(name,age) {
+        this.name = name;
+        this.age = age;
+        this.say = function () {
+            console.log(this.name,this.age);
+        }
+    }
+    var obj = new Person('笑话',18);
+    obj.say();
+</script>
+</html>

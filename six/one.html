@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性</title>
+</head>
+<body>
+   <div id="div" style="width: 200px;height: 300px;background-color: red;" class="test">我是盒子</div>
+</body>
+<script>
+    var oDiv = document.getElementById('div');
+    // console.log(oDiv.innerHTML);
+    // console.log(oDiv.innerText);
+    // alert(oDiv.style.width);
+    // alert(oDiv.style.backgroundColor);
+    oDiv.setAttribute('demo','100');
+    alert(oDiv.getAttribute('demo'));
+</script>
+</html>

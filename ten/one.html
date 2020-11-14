@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单对象和下拉框</title>
+</head>
+<body>
+  <form action="1.php" method="post" id="fm" name="frm">
+      <input type="text" name="username" value="goudan" /><br/>
+      <input type="password" name="password" value="123"/><br/>
+      <a href="" onclick="sub();">登录</a>
+      <input type="submit" value="提交"/>
+  </form>
+</body>
+<script>
+    //通过id获取form对象
+    // var oForm = document.getElementById('fm');
+    //通过name获取form对象
+    // var oForm = document.frm;
+    //通过document自带的forms属性获取
+    var oForm = document.forms[0];
+    function sub() {
+      oForm.submit();
+      return false;
+    }
+    // console.log(oForm.action,oForm.method);
+    // console.log(oForm.username.value,oForm.password.value);
+    alert(oForm);
+</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>连接和点击同时</title>
+</head>
+<body>
+<!--  <a href="http://www.baidu.com" onclick=" return demo();">百度</a>-->
+<a href="http://www.baidu.com" onclick=" return demo();">百度</a>
+</body>
+<script>
+    function demo(ev) {
+        var oEvent = ev || window.event;
+        oEvent.preventDefault();
+       console.log(100);
+       // return false;
+    }
+</script>
+</html>

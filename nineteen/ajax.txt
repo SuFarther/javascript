@@ -1,0 +1,80 @@
+js-ajax
+
+  1、应用场景
+      asynchronous javascript and xml === ajax
+      你在注册百度账号的时候,要写用户名,显示该用户名已经被注册过？
+      百度中输入文字,下面显示高频的词汇
+      股票、体育直播,不刷新页面,数据一直在变化,这些都要通过ajax来实现
+
+      ajax就是js中的一个对象,它可以和服务器进行交互,达到页面
+      局部刷新的效果
+
+  2、ajax使用
+     创建对象
+     谷歌、火狐、Opera、IE7以上
+     var xhr = new XMLHttpRequest();
+     //主流浏览器中创建ajax对象的方式
+
+     var xhr = new ActiveXObject("Microsoft.XMLHTTP"); //垃圾播放器的样式
+     var xhr = new ActiveXObject("Msxml2.XMLHTTP"); //垃圾播放器的样式
+     var xhr = new ActiveXObject("Msxml2.XMLHTTP.3.0");
+     var xhr = new ActiveXObject("Msxml2.XMLHTTP.5.0");
+     var xhr = new ActiveXObject("Msxml2.XMLHTTP.6.0"); //IE维护的最高版本
+
+     get方式
+       //参数1： 请求方式
+       //参数2： 请求地址
+       xhr.open('get','1.php?username=goudan');
+       //send: 发送请求
+       xhr.send();
+     post方式
+      xhr.open('post','1.php');
+      //在send函数中写post要传递的参数字符串
+      //[注]如果要以post方式请求,必须设置这个函数
+      xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+      xhr.send('username=goudan&password=123456');
+      字符集统一
+      onreadystatechange: 当ajax状态改变的时候触发这个事件
+      readyState(01234): ajax状态
+         0： 初始化
+         1： 执行了open方法
+         2： 执行了send方法
+         3： 得到了部分响应数据
+         4： 得到了全部的响应数据
+         对我们有用的就是 4
+
+      status: 获取http的状态码,当状态码为200的时候,来得到响应的1数据
+      responseText: 现在都是用这个,交互的格式都是json格式
+      将JSON字符串转换为js对象
+       //第一种方法:
+       var obj = eval('('+xhr.responseText+')');
+       //第二种方法:
+       var obj = JSON.parse(xhr.responseText);
+       将js对象转换为JSON格式的字符串
+         //给你一个js对象,如何将其转化为json格式的字符串
+         console.log(JSON.stringify(obj));
+
+  3、同步和异步
+    第三个参数: 是否异步
+    同步的时候, 事件绑定函数必须在open的上面
+    异步的时候, 事件绑定函数在哪都可以,所以都放到open的上面
+    xhr.open('post','goudan.php',false);
+
+    ajax去请求数据的时候,js这一端的代码是否要接着执行还是要等着
+    ajax的结果
+    同步： 必须等着ajax的结果，才能接着向下执行
+    异步: （使用的居多,而且效率要比同步的效率高）
+
+  4、跨域
+     跨域就是跨域名 (ajax默认是不能跨域请求的)
+     127.0.0.1 localhost
+     那么如何解决跨域的请求的问题呢？
+     两种方法:
+       (1) header头设置
+           header('Access-Control-Allow-Origin:*');
+       (2) 使用JSONP (JSON with padding)
+
+          后端需要返回函数调用字符串,函数的函数就是json格式的字符串,在前端
+          定义这个函数,然后通过
+          <script src='test.php'></script>
+          将其引入进来,然后就会直接执行定义好的那个函数

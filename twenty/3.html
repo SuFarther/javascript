@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsoup</title>
+</head>
+<script>
+    function fn(data) {
+        console.log(data);
+    }
+    window.onload = function () {
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function () {
+          var oScript = document.createElement('script');
+          oScript.src='http://localhost:63342/javascript/twenty/2.php?_ijt=c3glp84a5pd0o39qv2vlfb4hk';
+          document.body.appendChild(oScript);
+        }
+    }
+</script>
+<body>
+   <button id="btn">点击我实现跨域</button>
+</body>
+<script src="http://localhost:63342/javascript/twenty/2.php?_ijt=c3glp84a5pd0o39qv2vlfb4hk"></script>
+</html>

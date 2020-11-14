@@ -1,0 +1,17 @@
+jsDOM操作-表单对象
+
+1、表单对象
+    三种查找方法
+    //通过id获取form对象
+    // var oForm = document.getElementById('fm');
+    //通过name获取form对象
+    // var oForm = document.frm;
+    //通过document自带的forms属性获取
+    var oForm = document.forms[0];
+    alert(oForm);
+    submit()方法
+    method属性
+    action属性
+2、select下拉框
+    selectedIndex
+    options
